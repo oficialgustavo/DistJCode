@@ -32,8 +32,7 @@ def find_word(palavra, file):
     for linha in file:
         #verifica se determinada string está contida nas linhas do arquivo
         if palavra in linha:
-	    #salva o comando e a linha no dicionário
-            dici[file.index(linha)+1]=palavra 
+            dici[file.index(linha)+1]=palavra
             cont += 1
     return cont
 
@@ -154,12 +153,12 @@ def writingCode():
         code +="\n        label=" +' "' + entrada +'" ' + """
     }
     """ + toCode
-        writeFile = open('teste.txt','w')
+        writeFile = open('graph-code.txt','w')
     elif subGraph==1:
         ligaRede = ligacoesDeRede(listProg1, list) 
         code +="\n        label=" +' "' + entrada2 +'" ' + """
     }\n    """+ toCode + "\n" + ligaRede + "}"
-        writeFile = open('teste.txt','a')
+        writeFile = open('graph-code.txt','a')
     
     #cria um arquivo para salvar o código do GraphViz
     writeFile.write(code)
@@ -208,4 +207,4 @@ try:
     writingCode()
 except:
     print("Error.\nPlease try again")
-os.startfile("teste.txt")
+os.startfile("graph-code.txt")
