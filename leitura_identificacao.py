@@ -11,10 +11,7 @@
     ---tentar abrir o GraphViz--- (Não feito)
 """
 import os #impotação do módulo OS para abrir arquivos
-"""
-Para abrir com o progrma padrão do WINDOWS:
-    os.startfile("teste.txt")
-"""
+
 subGraph=0
 nSend=0
 nRecv=0
@@ -32,15 +29,12 @@ dici={}
 #verifica a existência de cada palavra recebida em um arquivo determinado
 def find_word(palavra, file):
     cont = 0
-    #print("\nPalavra: " + palavra)
     for linha in file:
         #verifica se determinada string está contida nas linhas do arquivo
         if palavra in linha:
-            dici[file.index(linha)+1]=palavra
-            #salva o comando e a linha no dicionário
-            #print("Encontrado na linha: " + str(file.index(linha)+1))
+	    #salva o comando e a linha no dicionário
+            dici[file.index(linha)+1]=palavra 
             cont += 1
-    #print ("Total de ocorrências: " + str(cont))
     return cont
 
 #define as interações via rede
@@ -119,7 +113,7 @@ def writingCode():
     #Verifica todos os itens no dicionário    
     for item in range(nLinhas-2):
         try:
-            #Verificar qual o comando da primeira linha e escrever no arquivo texto
+            #Verifica qual o comando da primeira linha e escrever no arquivo texto
             if dici[auxMenor]=='readUTF':
                 sAux ="""\n        readUTF_""" + str(contRECV) + """[shape=invhouse, fillcolor=white,color =cyan, label="recv\nreadUTF: line """ + str(auxMenor) + '"]' #imprimir \n
                 auxString = "readUTF_" + str(contRECV)
@@ -182,8 +176,6 @@ def verify_file(file_in):
         newfile=open(file_in + ".java","r") 
         #operações com o arquivo
         file=newfile.readlines() #salva as linhas do arquivo em uma lista
-        #print("\nARQUIVO: " + file_in + "\n")
-        #print("Total de linhas: " + str(len(file))) #número de linhas do arquivo
         nLinhas += len(file)
         nRecv = find_word("readUTF",file) #"procura" por recvs
         nSend = find_word("writeUTF",file) #"procura" por sends
