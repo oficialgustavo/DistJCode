@@ -3,7 +3,7 @@ It is a project that reads two Java programs and generate another code to be rea
 
 IMPORTANT: This program works only with two archives
 
-What this program do?:
+What this program do?
 
  Collect the name of two files from the user (.java archives);
  Verify the existance of this files;
